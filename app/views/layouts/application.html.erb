@@ -4,15 +4,16 @@
   <title>Blog</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-  
+
   <!-- Carga los estilos globales -->
   <%= stylesheet_link_tag "application", media: "all" %>
 
   <!-- Carga los estilos específicos para cada controlador -->
-  <% if controller_name == 'home' %>
-    <%= stylesheet_link_tag "home", media: "all" %>
-  <% elsif controller_name == 'posts' %>
-    <%= stylesheet_link_tag "posts", media: "all" %>
+  <%= stylesheet_link_tag controller_name, media: "all" %>
+
+  <!-- Cargar el archivo forms.css solo en las vistas de 'new' o 'edit' -->
+  <% if controller_name == 'posts' && (action_name == 'new' || action_name == 'edit') %>
+    <%= stylesheet_link_tag "forms", media: "all" %>
   <% end %>
 
   <%= javascript_include_tag "application" %>

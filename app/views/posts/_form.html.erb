@@ -1,6 +1,6 @@
 <%= form_for(@post) do |f| %>
   <% if @post.errors.any? %>
-    <div style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+    <div class="error-message">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
       <ul>
         <% @post.errors.full_messages.each do |msg| %>
@@ -10,22 +10,22 @@
     </div>
   <% end %>
 
-  <div style="margin-bottom: 15px;">
-    <%= f.label :name, style: "display:block; font-weight: bold;" %>
-    <%= f.text_field :name, style: "width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
   </div>
 
-  <div style="margin-bottom: 15px;">
-    <%= f.label :title, style: "display:block; font-weight: bold;" %>
-    <%= f.text_field :title, style: "width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" %>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
   </div>
 
-  <div style="margin-bottom: 15px;">
-    <%= f.label :content, style: "display:block; font-weight: bold;" %>
-    <%= f.text_area :content, style: "width: 100%; padding: 8px; height: 150px; border: 1px solid #ccc; border-radius: 4px;" %>
+  <div class="field">
+    <%= f.label :content %>
+    <%= f.text_area :content %>
   </div>
 
-  <div>
-    <%= f.submit style: "padding: 10px 20px; background: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;" %>
+  <div class="actions">
+    <%= f.submit %>
   </div>
 <% end %>
