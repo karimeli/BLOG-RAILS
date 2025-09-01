@@ -1,16 +1,30 @@
-<p style="color: green"><%= notice %></p>
-
-<% content_for :title, "Posts" %>
-
 <h1>Posts</h1>
 
-<div id="posts">
-  <% @posts.each do |post| %>
-    <%= render post %>
-    <p>
-      <%= link_to "Show this post", post %>
-    </p>
-  <% end %>
-</div>
+<table style="width: 100%; border-collapse: collapse; background: #FFF; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+  <thead>
+    <tr style="background-color: #4CAF50; color: white; text-align: left;">
+      <th style="padding: 10px;">Name</th>
+      <th style="padding: 10px;">Title</th>
+      <th style="padding: 10px;">Content</th>
+      <th style="padding: 10px;"></th>
+      <th style="padding: 10px;"></th>
+      <th style="padding: 10px;"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr style="border-bottom: 1px solid #ddd;">
+        <td style="padding: 10px;"><%= post.name %></td>
+        <td style="padding: 10px;"><%= post.title %></td>
+        <td style="padding: 10px;"><%= post.content %></td>
+        <td style="padding: 10px;"><%= link_to 'Show', post, style: "color: #2196F3; text-decoration: none;" %></td>
+        <td style="padding: 10px;"><%= link_to 'Edit', edit_post_path(post), style: "color: #FFC107; text-decoration: none;" %></td>
+        <td style="padding: 10px;"><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, style: "color: #F44336; text-decoration: none;" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<%= link_to "New post", new_post_path %>
+<br />
+
+<%= link_to 'New Post', new_post_path, style: "display: inline-block; padding: 10px 20px; background: #4CAF50; color: white; text-decoration: none; border-radius: 5px;" %>

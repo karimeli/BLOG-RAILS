@@ -1,10 +1,19 @@
-<p style="color: green"><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
-<%= render @post %>
+<p>
+  <strong>Name:</strong>
+  <%= @post.name %>
+</p>
 
-<div>
-  <%= link_to "Edit this post", edit_post_path(@post) %> |
-  <%= link_to "Back to posts", posts_path %>
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
 
-  <%= button_to "Destroy this post", @post, method: :delete %>
-</div>
+<p>
+  <strong>Content:</strong>
+  <%= @post.content %>
+</p>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>

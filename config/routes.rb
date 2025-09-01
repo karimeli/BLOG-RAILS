@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+  # Ruta de posts (CRUD completo)
   resources :posts
+
+  # Ruta de la página de inicio
   get 'home/index'
-  root 'home#index'  # Esta línea hace que home#index sea la página principal
+
+  # Página principal
+  root 'home#index'
 end
