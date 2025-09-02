@@ -47,6 +47,7 @@ def destroy
 end
 
 
+
   private
 
   # Strong parameters: permite solo estos campos

@@ -15,11 +15,13 @@
   <%= @post.content %>
 </p>
 
+<!-- Formulario para eliminar el post -->
+<%= form_for @post, method: :delete, html: { style: "display:inline;" } do %>
+  <%= submit_tag 'Delete', data: { confirm: 'Are you sure?' }, style: "background-color: red; color: white; padding: 5px 10px; border: none; cursor: pointer;" %>
+<% end %>
+
 <!-- Enlace para editar el post -->
 <%= link_to 'Edit', edit_post_path(@post) %> |
-
-<!-- Enlace para eliminar el post (sin confirmación) -->
-<%= link_to 'Destroy', @post, method: :delete %> |
 
 <!-- Enlace para regresar a la lista de posts -->
 <%= link_to 'Back', posts_path %>
