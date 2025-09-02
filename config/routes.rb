@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  # Ruta de posts (CRUD completo)
-  resources :posts
+  # Rutas para posts con comentarios anidados
+  resources :posts do
+    resources :comments, only: [:create]  # Solo necesitamos la acción create para los comentarios
+  end
 
-  # Ruta de la página de inicio
-  get 'home/index'
-
-  # Página principal
+  # Página de inicio
   root 'home#index'
 end
