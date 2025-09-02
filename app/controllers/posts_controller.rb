@@ -40,11 +40,12 @@ class PostsController < ApplicationController
   end
 
   # 7. Eliminar post
-  def destroy
-    @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to posts_path, notice: "Post was successfully deleted."
-  end
+def destroy
+  @post = Post.find(params[:id])  # Encuentra el post a eliminar
+  @post.destroy  # Elimina el post de la base de datos
+  redirect_to posts_path, notice: "Post was successfully deleted."  # Redirige a la lista de posts
+end
+
 
   private
 

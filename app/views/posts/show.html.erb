@@ -15,5 +15,11 @@
   <%= @post.content %>
 </p>
 
+<!-- Enlace para editar el post -->
 <%= link_to 'Edit', edit_post_path(@post) %> |
+
+<!-- Enlace para eliminar el post (sin confirmación) -->
+<%= link_to 'Destroy', @post, method: :delete %> |
+
+<!-- Enlace para regresar a la lista de posts -->
 <%= link_to 'Back', posts_path %>
