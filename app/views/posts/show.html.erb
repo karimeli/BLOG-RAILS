@@ -27,31 +27,14 @@
 <%= link_to 'Back', posts_path %>
 
 <h2>Comments</h2>
-<% @post.comments.each do |comment| %>
-  <div class="comment">
-    <p>
-      <strong>Commenter:</strong>
-      <%= comment.commenter %>
-    </p>
-
-    <p>
-      <strong>Comment:</strong>
-      <%= comment.body %>
-    </p>
-  </div>
-<% end %>
+<!-- Renderiza todos los comentarios utilizando el parcial '_comment' -->
+<%= render @post.comments %>
 
 <h2>Add a comment:</h2>
-<%= form_for([@post, @post.comments.build]) do |f| %>
-  <div class="field">
-    <%= f.label :commenter %><br />
-    <%= f.text_field :commenter %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Add Comment", style: "background-color: green; color: white; padding: 5px 10px; border: none; cursor: pointer;" %>
-  </div>
-<% end %>
+<!-- Renderiza el formulario para agregar comentarios -->
+<%= render "comments/form" %>
+
+<br />
+
+<%= link_to 'Edit Post', edit_post_path(@post) %> |
+<%= link_to 'Back to Posts', posts_path %> |
