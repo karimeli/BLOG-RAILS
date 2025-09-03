@@ -1,90 +1,46 @@
+/* app/assets/stylesheets/comments.css.scss */
+
 /* Estilo para los comentarios */
 .comment {
   margin-bottom: 20px;
   padding: 15px;
   border: 1px solid #ddd;
-  background-color: #fafafa;  /* Fondo más suave */
-  border-radius: 8px;         /* Bordes redondeados */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);  /* Sombra suave para profundidad */
-  transition: transform 0.2s ease, box-shadow 0.2s ease;  /* Efecto de transición para hover */
+  background-color: #fafafa;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .comment:hover {
-  transform: translateY(-5px);  /* Desplazamiento al pasar el ratón */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);  /* Sombra más pronunciada al hacer hover */
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Estilo para los detalles del comentario */
 .comment p {
-  font-size: 16px;  /* Aumento del tamaño de la fuente */
-  line-height: 1.7;  /* Mejora la legibilidad */
-  color: #333;      /* Color de texto más oscuro para mejor contraste */
-  margin: 10px 0;   /* Espaciado entre el contenido */
+  font-size: 16px;
+  line-height: 1.7;
+  color: #333;
 }
 
-/* Estilo para el nombre del comentarista */
 .comment .commenter {
   font-weight: bold;
-  color: #007BFF;  /* Color azul para resaltar el nombre del comentarista */
+  color: #007BFF;
 }
 
 /* Estilo para el botón de eliminar comentario */
 .comment button {
-  background-color: #FF4D4D;  /* Color rojo más llamativo */
+  background-color: #FF4D4D;
   color: white;
   border: none;
   padding: 8px 15px;
   font-size: 14px;
   cursor: pointer;
   border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.3s ease;  /* Transición suave para hover */
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .comment button:hover {
-  background-color: #FF2A2A;  /* Color más oscuro al pasar el ratón */
-  transform: scale(1.05);  /* Ligero aumento de tamaño al hacer hover */
-}
-
-/* Estilo para el formulario de comentarios */
-.field {
-  margin-bottom: 15px;
-}
-
-.field label {
-  font-weight: bold;
-  color: #555;  /* Color gris para las etiquetas */
-}
-
-.field input, .field textarea {
-  width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background-color: #f9f9f9;
-  transition: border-color 0.3s ease;
-}
-
-.field input:focus, .field textarea:focus {
-  border-color: #007BFF;  /* Cambia el color del borde al enfocarse */
-  outline: none;  /* Quita el contorno por defecto */
-}
-
-.actions {
-  text-align: right;
-}
-
-.actions input[type="submit"] {
-  background-color: #28a745;  /* Verde para el botón de submit */
-  color: white;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-.actions input[type="submit"]:hover {
-  background-color: #218838;  /* Color más oscuro al pasar el ratón */
+  background-color: #FF2A2A;
+  transform: scale(1.05);
 }

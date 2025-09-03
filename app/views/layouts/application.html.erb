@@ -16,6 +16,11 @@
     <%= stylesheet_link_tag "forms", media: "all" %>
   <% end %>
 
+  <!-- Cargar el archivo comments.css solo en las vistas de 'show' -->
+  <% if controller_name == 'posts' && action_name == 'show' %>
+    <%= stylesheet_link_tag "comments", media: "all" %>
+  <% end %>
+
   <%= javascript_include_tag "application" %>
 </head>
 <body style="background: #EEEEEE; font-family: Arial, sans-serif; margin: 0; padding: 20px;">
