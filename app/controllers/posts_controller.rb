@@ -1,20 +1,23 @@
 class PostsController < ApplicationController
-  # 1. Listar todos los posts
+  # Autenticación básica
+  http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
+
+  # Acción para listar las publicaciones
   def index
     @posts = Post.all
   end
 
-  # 2. Mostrar un post
+  # Acción para mostrar una publicación específica
   def show
     @post = Post.find(params[:id])
   end
 
-  # 3. Nuevo post
+  # Acción para crear una nueva publicación
   def new
     @post = Post.new
   end
 
-  # 4. Crear post
+  # Acción para crear una publicación en la base de datos
   def create
     @post = Post.new(post_params)
     if @post.save
@@ -24,12 +27,12 @@ class PostsController < ApplicationController
     end
   end
 
-  # 5. Editar post
+  # Acción para editar una publicación
   def edit
     @post = Post.find(params[:id])
   end
 
-  # 6. Actualizar post
+  # Acción para actualizar una publicación
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
@@ -39,18 +42,16 @@ class PostsController < ApplicationController
     end
   end
 
-  # 7. Eliminar post
-def destroy
-  @post = Post.find(params[:id])  # Encuentra el post a eliminar
-  @post.destroy  # Elimina el post de la base de datos
-  redirect_to posts_path, notice: "Post was successfully deleted."  # Redirige a la lista de posts
-end
-
-
+  # Acción para eliminar una publicación
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_path, notice: "Post was successfully deleted."
+  end
 
   private
 
-  # Strong parameters: permite solo estos campos
+  # Strong parameters
   def post_params
     params.require(:post).permit(:name, :title, :content)
   end

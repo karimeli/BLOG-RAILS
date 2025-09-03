@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+  # Autenticación básica para eliminar comentarios
+  http_basic_authenticate_with name: "dhh", password: "secret", only: :destroy
+
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.create(comment_params)
@@ -6,10 +9,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:post_id])  # Encuentra la publicación
-    @comment = @post.comments.find(params[:id])  # Encuentra el comentario
-    @comment.destroy  # Elimina el comentario
-    redirect_to post_path(@post), notice: "Comment was successfully deleted."  # Redirige al post
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
+    @comment.destroy
+    redirect_to post_path(@post)
   end
 
   private
@@ -18,3 +21,4 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:commenter, :body)
   end
 end
+
