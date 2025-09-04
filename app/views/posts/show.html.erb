@@ -15,26 +15,19 @@
   <%= @post.content %>
 </p>
 
-<!-- Formulario para eliminar el post -->
-<%= form_for @post, method: :delete, html: { style: "display:inline;" } do %>
-  <%= submit_tag 'Delete', style: "background-color: red; color: white; padding: 5px 10px; border: none; cursor: pointer;" %>
-<% end %>
+<p>
+  <strong>Tags:</strong>
+  <div class="tags-section">
+    <%= @post.tags.map { |tag| content_tag(:span, tag.name, class: 'tag') }.join(", ").html_safe %>
+  </div>
+</p>
 
-<!-- Enlace para editar el post -->
-<%= link_to 'Edit', edit_post_path(@post) %> |
-
-<!-- Enlace para regresar a la lista de posts -->
-<%= link_to 'Back', posts_path %>
 
 <h2>Comments</h2>
-<!-- Renderiza todos los comentarios utilizando el parcial '_comment' -->
 <%= render @post.comments %>
 
 <h2>Add a comment:</h2>
-<!-- Renderiza el formulario para agregar comentarios -->
 <%= render "comments/form" %>
 
-<br />
-
 <%= link_to 'Edit Post', edit_post_path(@post) %> |
-<%= link_to 'Back to Posts', posts_path %> |
+<%= link_to 'Back to Posts', posts_path %>

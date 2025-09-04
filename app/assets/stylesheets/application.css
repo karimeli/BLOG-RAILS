@@ -3,5 +3,6 @@
  *= require_self
  *= require comments
   *= require posts
-  Z *= require forms
+   *= require forms
+   *= require tags
  */

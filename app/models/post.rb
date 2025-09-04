@@ -1,9 +1,11 @@
 class Post < ApplicationRecord
-  # Validaciones para los campos name, title y content
+  has_many :comments, dependent: :destroy
+  has_many :tags
+
+  # Permitir etiquetas anidadas
+  accepts_nested_attributes_for :tags, allow_destroy: true, reject_if: proc { |attrs| attrs['name'].blank? }
+
   validates :name, presence: true
   validates :title, presence: true, length: { minimum: 5 }
   validates :content, presence: true
-
-  # Relación con comentarios
-  has_many :comments, dependent: :destroy  # Elimina los comentarios cuando se elimina el post
 end
