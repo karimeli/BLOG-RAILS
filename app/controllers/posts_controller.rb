@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   # Autenticación básica
-  http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
+  http_basic_authenticate_with name: "dhh", password: "secret", except: [ :index, :show ]
 
   # Acción para listar las publicaciones
   def index
@@ -51,11 +51,8 @@ class PostsController < ApplicationController
 
   private
 
-  # Strong parameters
+  # Strong parameters: permite solo los parámetros permitidos
   def post_params
     params.require(:post).permit(:name, :title, :content)
-  end
-  def post_params
-    params.require(:post).permit(:name, :title, :content, tags_attributes: [:id, :name, :_destroy])
   end
 end
