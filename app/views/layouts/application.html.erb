@@ -8,12 +8,9 @@
   <!-- Carga los estilos globales -->
   <%= stylesheet_link_tag "application", media: "all" %>
 
-  <!-- Carga los estilos específicos para cada controlador -->
-  <%= stylesheet_link_tag controller_name, media: "all" %>
-
-  <!-- Cargar el archivo posts.css solo en las vistas de 'show' -->
-  <% if controller_name == 'posts' && action_name == 'show' %>
-    <%= stylesheet_link_tag "posts", media: "all" %>
+  <!-- Carga los estilos específicos para cada controlador si existe el archivo -->
+  <% if File.exist?(Rails.root.join('app/assets/stylesheets', "#{controller_name}.css")) %>
+    <%= stylesheet_link_tag controller_name, media: "all" %>
   <% end %>
 
   <!-- Cargar el archivo forms.css solo en las vistas 'new' y 'edit' -->
@@ -22,11 +19,10 @@
   <% end %>
 
   <!-- Cargar el archivo comments.css solo en la vista 'show' -->
-  <% if controller_name == 'posts' && action_name == 'show' %>
+  <!-- Cargar el archivo comments.css solo en la vista 'show' si existe -->
+  <% if controller_name == 'posts' && action_name == 'show' && File.exist?(Rails.root.join('app/assets/stylesheets', "comments.css")) %>
     <%= stylesheet_link_tag "comments", media: "all" %>
   <% end %>
-
-  <%= javascript_include_tag "application" %>
 </head>
 <body style="background: #EEEEEE; font-family: Arial, sans-serif; margin: 0; padding: 20px;">
 
