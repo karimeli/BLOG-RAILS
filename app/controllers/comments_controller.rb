@@ -1,24 +1,50 @@
 class CommentsController < ApplicationController
-  # Autenticación básica para eliminar comentarios
-  http_basic_authenticate_with name: "dhh", password: "secret", only: :destroy
+  before_action :authenticate_user!
+  before_action :set_post
+  before_action :set_comment, only: [ :edit, :update, :destroy ]
+  before_action :authorize_comment, only: [ :edit, :update, :destroy ]
 
   def create
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.create(comment_params)
-    redirect_to post_path(@post)
+    @comment = current_user.comments.build(comment_params)
+    @comment.post = @post
+    if @comment.save
+      redirect_to @post, notice: "Comment was successfully created."
+    else
+      render "posts/show"
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @comment.update(comment_params)
+      redirect_to @post, notice: "Comment was successfully updated."
+    else
+      render :edit
+    end
   end
 
   def destroy
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.find(params[:id])
     @comment.destroy
-    redirect_to post_path(@post)
+    redirect_to @post, notice: "Comment was successfully destroyed."
   end
 
   private
 
+  def set_post
+    @post = Post.find(params[:post_id])
+  end
+
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
+
   def comment_params
-    params.require(:comment).permit(:commenter, :body)
+    params.require(:comment).permit(:content)
+  end
+
+  def authorize_comment
+    redirect_to @post, alert: "Not authorized" unless @comment.user == current_user
   end
 end
-

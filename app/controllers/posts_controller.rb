@@ -1,25 +1,20 @@
 class PostsController < ApplicationController
-  # Autenticación básica
-  http_basic_authenticate_with name: "dhh", password: "secret", except: [ :index, :show ]
+  before_action :authenticate_user!, except: [ :index, :show ]
+  before_action :set_post, only: [ :show, :edit, :update, :destroy ]
 
-  # Acción para listar las publicaciones
   def index
     @posts = Post.all
   end
 
-  # Acción para mostrar una publicación específica
   def show
-    @post = Post.find(params[:id])
   end
 
-  # Acción para crear una nueva publicación
   def new
     @post = Post.new
   end
 
-  # Acción para crear una publicación en la base de datos
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
     if @post.save
       redirect_to @post, notice: "Post was successfully created."
     else
@@ -27,14 +22,12 @@ class PostsController < ApplicationController
     end
   end
 
-  # Acción para editar una publicación
   def edit
-    @post = Post.find(params[:id])
+    authorize_user
   end
 
-  # Acción para actualizar una publicación
   def update
-    @post = Post.find(params[:id])
+    authorize_user
     if @post.update(post_params)
       redirect_to @post, notice: "Post was successfully updated."
     else
@@ -42,17 +35,23 @@ class PostsController < ApplicationController
     end
   end
 
-  # Acción para eliminar una publicación
   def destroy
-    @post = Post.find(params[:id])
+    authorize_user
     @post.destroy
-    redirect_to posts_path, notice: "Post was successfully deleted."
+    redirect_to posts_url, notice: "Post was successfully destroyed."
   end
 
   private
 
-  # Strong parameters: permite solo los parámetros permitidos
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
   def post_params
-    params.require(:post).permit(:name, :title, :content)
+    params.require(:post).permit(:title, :content)
+  end
+
+  def authorize_user
+    redirect_to posts_path, alert: "Not authorized" unless @post.user == current_user
   end
 end

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :posts do
-    resources :comments, only: [ :create, :destroy ]  # Solo 'create' y 'destroy' para comentarios
+    resources :comments, only: [ :create, :edit, :update, :destroy ]
   end
 
-  root "home#index"  # Página principal
+  root "posts#index"
 end
