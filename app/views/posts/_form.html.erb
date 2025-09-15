@@ -1,6 +1,6 @@
-<%= form_for(@post) do |post_form| %>
+<%= form_with(model: @post) do |form| %>
   <% if @post.errors.any? %>
-    <div id="errorExplanation">
+    <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
       <ul>
         <% @post.errors.full_messages.each do |msg| %>
@@ -11,21 +11,16 @@
   <% end %>
 
   <div class="field">
-    <%= post_form.label :name %><br />
-    <%= post_form.text_field :name %>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= post_form.label :title %><br />
-    <%= post_form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= post_form.label :content %><br />
-    <%= post_form.text_area :content %>
+    <%= form.label :content %>
+    <%= form.text_area :content %>
   </div>
 
   <div class="actions">
-    <%= post_form.submit %>
+    <%= form.submit "Create Post" %>
   </div>
 <% end %>
