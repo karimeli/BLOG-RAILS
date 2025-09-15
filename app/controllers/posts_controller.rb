@@ -7,8 +7,9 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
-  # Mostrar un post individual
+  # Mostrar un post individual con comentarios
   def show
+    @comments = @post.comments  # Carga todos los comentarios del post
   end
 
   # Formulario para crear un nuevo post

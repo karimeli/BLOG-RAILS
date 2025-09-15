@@ -1,19 +1,5 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @post.name %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
+<h1><%= @post.title %></h1>
+<p><%= @post.content %></p>
 
 <!-- Formulario para eliminar el post -->
 <%= form_for @post, method: :delete, html: { style: "display:inline;" } do %>
@@ -22,17 +8,19 @@
 
 <!-- Enlace para editar el post -->
 <%= link_to 'Edit', edit_post_path(@post) %> |
-
 <!-- Enlace para regresar a la lista de posts -->
 <%= link_to 'Back', posts_path %>
 
 <h2>Comments</h2>
-<%= render @post.comments %>
+<% if @comments.any? %>  <!-- Verifica si hay comentarios -->
+  <%= render @comments %>  <!-- Renderiza todos los comentarios -->
+<% else %>
+  <p>No comments yet.</p>
+<% end %>
 
 <h2>Add a comment:</h2>
-<%= render "comments/form" %>
+<%= render "comments/form" %>  <!-- Formulario para agregar un comentario -->
 
 <br />
 
-<%= link_to 'Edit Post', edit_post_path(@post) %> |
 <%= link_to 'Back to Posts', posts_path %> |

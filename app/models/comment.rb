@@ -1,3 +1,5 @@
 class Comment < ApplicationRecord
-  belongs_to :post  # Establece la relación con Post
+  belongs_to :user
+  belongs_to :post
+    validates :content, presence: true
 end
