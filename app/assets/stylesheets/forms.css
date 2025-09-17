@@ -1,42 +1,98 @@
-/* posts.css */
-
 /* Estilo para el mensaje de error */
 .error-message {
   background: #f8d7da;
   color: #721c24;
   padding: 15px;
-  border-radius: 5px;
+  border-radius: 8px;  /* Borde más redondeado */
   margin-bottom: 20px;
+  font-size: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+  transition: opacity 0.3s ease;  /* Transición suave */
+}
+
+.error-message:hover {
+  opacity: 0.9;  /* Efecto suave cuando se pasa el mouse */
 }
 
 /* Estilos generales para los campos del formulario */
 .field {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  position: relative;  /* Necesario para posicionar el ícono de validación si lo usamos */
 }
 
 .field label {
   display: block;
-  font-weight: bold;
+  font-weight: 600;
+  color: #333;  /* Color más oscuro para la etiqueta */
+  margin-bottom: 5px;  /* Espacio entre la etiqueta y el campo */
 }
 
 .field input,
 .field textarea {
   width: 100%;
-  padding: 8px;
+  padding: 10px;  /* Más espacio para mayor comodidad */
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 8px;  /* Bordes más redondeados */
+  font-size: 1rem;  /* Asegura una fuente legible */
+  box-sizing: border-box;  /* Asegura que el padding no afecte el ancho */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;  /* Transición para bordes y sombra */
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: #4CAF50;  /* Bordes verdes al hacer foco */
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);  /* Sombra verde alrededor */
 }
 
 /* Estilo para el botón de envío */
 .actions input[type="submit"] {
-  padding: 10px 20px;
+  padding: 12px 30px;
   background: #4CAF50;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .actions input[type="submit"]:hover {
   background-color: #45a049;
+  transform: scale(1.05);  /* Efecto de escala en el hover */
+}
+
+.actions input[type="submit"]:active {
+  background-color: #388e3c;  /* Color más oscuro al hacer clic */
+}
+
+/* Estilo para los campos de texto con error */
+.field.error input,
+.field.error textarea {
+  border-color: #e74c3c;  /* Color de borde rojo para los campos con error */
+  box-shadow: 0 0 5px rgba(231, 76, 60, 0.3);  /* Sombra roja */
+}
+
+.field.error label {
+  color: #e74c3c;  /* Color de etiqueta en rojo si hay error */
+}
+
+/* Estilos para los mensajes de ayuda */
+.field .help-text {
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 5px;
+}
+
+/* Responsividad: Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+  .field input,
+  .field textarea {
+    font-size: 1rem;  /* Ajusta el tamaño de la fuente en pantallas pequeñas */
+  }
+
+  .actions input[type="submit"] {
+    padding: 10px 25px;  /* Ajusta el tamaño del botón */
+    font-size: 1rem;
+  }
 }

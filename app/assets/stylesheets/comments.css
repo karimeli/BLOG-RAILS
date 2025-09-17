@@ -1,61 +1,46 @@
-/* Estilo para los comentarios */
-.comment {
-  margin-bottom: 20px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  background-color: #fafafa;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-  font-family: 'Arial', sans-serif;
+/* Estilo general para el formulario */
+.comment form {
+  margin-top: 20px;
 }
 
-.comment:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-  background-color: #f0f8ff;  /* Color de fondo al pasar el mouse */
-}
-
-/* Estilo para los detalles del comentario */
-.comment p {
-  font-size: 16px;
-  line-height: 1.8;
-  color: #333;
-  margin: 10px 0;
-}
-
-/* Estilo para el nombre del comentarista */
-.comment .commenter {
-  font-weight: bold;
-  font-size: 18px;
-  color: #007BFF;
-  margin-bottom: 10px;
-}
-
-/* Estilo para el cuerpo del comentario */
-.comment .body {
-  font-size: 15px;
-  color: #555;
-  padding: 10px;
-  border-left: 3px solid #007BFF;
-  background-color: #fff;
+/* Estilo para el área de texto (editor) */
+.comment .ckeditor {
+  width: 100%;
+  height: 200px;
+  margin-top: 10px;
   border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 10px;
 }
 
-/* Botón para eliminar comentario */
-.comment .destroy-comment-button {
+/* Estilo para el botón de eliminar comentario */
+.destroy-comment-button {
   background-color: #FF4D4D;
   color: white;
   border: none;
-  padding: 8px 16px;
+  padding: 10px 20px;
   font-size: 14px;
   cursor: pointer;
   border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   margin-top: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Sombra sutil en el botón */
 }
 
-.comment .destroy-comment-button:hover {
+.destroy-comment-button:hover {
   background-color: #FF2A2A;
-  transform: scale(1.05);
+  transform: scale(1.05);  /* Hace el botón ligeramente más grande */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Sombra más pronunciada */
+}
+
+.destroy-comment-button:active {
+  background-color: #E63946;  /* Color más oscuro cuando se hace clic */
+  transform: scale(1);  /* El botón vuelve a su tamaño original */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Sombra al hacer clic */
+}
+
+/* Estilo para el enfoque del botón */
+.destroy-comment-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.6);  /* Añadido enfoque accesible */
 }

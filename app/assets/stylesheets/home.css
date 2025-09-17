@@ -7,20 +7,25 @@
   background: linear-gradient(135deg, #f0f4f8, #d9e2ec); /* Fondo degradado */
   font-family: 'Arial', sans-serif;
   text-align: center;
+  padding: 20px;
+  box-sizing: border-box;  /* Asegura que el padding no afecte la altura */
 }
 
 .home-title {
-  font-size: 48px;
+  font-size: 3rem;  /* Mejor escalabilidad */
   color: #1a73e8;
   margin-bottom: 20px;
   font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.1); /* Sombra más suave */
+  line-height: 1.2;
+  letter-spacing: 1px; /* Un poco de espacio entre las letras */
 }
 
 .home-subtitle {
-  font-size: 20px;
+  font-size: 1.25rem;
   color: #555;
   margin-bottom: 40px;
+  line-height: 1.6;  /* Mejor separación entre líneas */
 }
 
 .home-link {
@@ -31,11 +36,32 @@
   text-decoration: none;
   border-radius: 8px;
   font-weight: bold;
-  font-size: 18px;
-  transition: all 0.3s ease;
+  font-size: 1.125rem;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(26, 115, 232, 0.3); /* Sombra suave para el enlace */
 }
 
 .home-link:hover {
   background-color: #155ab6;
   transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(26, 115, 232, 0.5); /* Efecto de sombra más prominente */
+}
+
+.home-link:active {
+  background-color: #0f4482;  /* Color más oscuro cuando el enlace se hace clic */
+}
+
+@media (max-width: 768px) {
+  .home-title {
+    font-size: 2.5rem; /* Ajuste en pantallas más pequeñas */
+  }
+
+  .home-subtitle {
+    font-size: 1rem; /* Ajuste en pantallas más pequeñas */
+  }
+
+  .home-link {
+    padding: 12px 30px;  /* Ajuste del tamaño del botón en pantallas pequeñas */
+    font-size: 1rem;
+  }
 }

@@ -2,7 +2,22 @@
  *= require_tree .
  *= require_self
  *= require comments
-  *= require posts
-   *= require forms
-   
- */
+ *= require posts
+ *= require forms
+  *= require auth
+   *= require ckeditor
+*/
+/* Estilo básico para el área de texto de CKEditor */
+.ckeditor {
+  width: 100%;
+  height: 200px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Estilo para el contorno del editor cuando es enfocado */
+.ckeditor:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}

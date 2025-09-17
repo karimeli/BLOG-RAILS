@@ -20,6 +20,8 @@ gem "jbuilder"
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem "bcrypt"
 gem "devise"
+gem "ckeditor"
+
 
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

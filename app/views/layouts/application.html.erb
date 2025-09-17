@@ -1,32 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog</title>
+  
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
   <!-- Carga los estilos globales -->
   <%= stylesheet_link_tag "application", media: "all" %>
 
-  <!-- Carga los estilos específicos para cada controlador si existe el archivo -->
+  <!-- Cargar estilos específicos para cada controlador si existe el archivo -->
   <% if File.exist?(Rails.root.join('app/assets/stylesheets', "#{controller_name}.css")) %>
     <%= stylesheet_link_tag controller_name, media: "all" %>
   <% end %>
 
+  <!-- Cargar el archivo auth.css solo en las vistas 'new', 'edit', 'destroy' -->
+  <% if ['sessions', 'registrations'].include?(controller_name) && ['new', 'edit', 'destroy'].include?(action_name) %>
+    <%= stylesheet_link_tag "auth", media: "all" %>
+  <% end %>
+
+  <!-- Cargar el archivo comments.css solo en las vistas 'show', 'edit', 'destroy' -->
+  <% if controller_name == 'posts' && ['show', 'edit', 'destroy'].include?(action_name) && File.exist?(Rails.root.join('app/assets/stylesheets', "comments.css")) %>
+    <%= stylesheet_link_tag "comments", media: "all" %>
+  <% end %>
+
   <!-- Cargar el archivo forms.css solo en las vistas 'new' y 'edit' -->
-  <% if controller_name == 'posts' && (action_name == 'new' || action_name == 'edit') %>
+  <% if controller_name == 'posts' && ['new', 'edit'].include?(action_name) %>
     <%= stylesheet_link_tag "forms", media: "all" %>
   <% end %>
 
-  <!-- Cargar el archivo comments.css solo en la vista 'show' -->
-  <!-- Cargar el archivo comments.css solo en la vista 'show' si existe -->
-  <% if controller_name == 'posts' && action_name == 'show' && File.exist?(Rails.root.join('app/assets/stylesheets', "comments.css")) %>
-    <%= stylesheet_link_tag "comments", media: "all" %>
-  <% end %>
 </head>
+
+
 <body style="background: #EEEEEE; font-family: Arial, sans-serif; margin: 0; padding: 20px;">
 
   <%= yield %> <!-- Aquí se insertan las vistas específicas -->
 
 </body>
 </html>
+

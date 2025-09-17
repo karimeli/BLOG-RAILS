@@ -38,10 +38,12 @@ class CommentsController < ApplicationController
   end
 
   def set_comment
-    @comment = Comment.find(params[:id])  # Encuentra el comentario
+    @comment = current_user.comments.find_by(id: params[:id])
+    unless @comment
+      redirect_to @post, alert: "You are not authorized to perform this action."
+    end
   end
-
   def comment_params
-    params.require(:comment).permit(:content)  # Permite solo el contenido del comentario
+    params.require(:comment).permit(:content, :body, :commenter)
   end
 end

@@ -1,14 +1,14 @@
-<!-- app/views/comments/_form.html.erb -->
-
 <%= form_for([@post, @post.comments.build]) do |f| %>
   <div class="field">
     <%= f.label :commenter %><br />
     <%= f.text_field :commenter %>
   </div>
+
   <div class="field">
     <%= f.label :body %><br />
-    <%= f.text_area :body %>
+    <%= f.text_area :body, class: "ckeditor", rows: 5 %> <!-- Agregamos la clase 'ckeditor' -->
   </div>
+
   <div class="actions">
     <%= f.submit "Add Comment", style: "background-color: green; color: white; padding: 5px 10px; border: none; cursor: pointer;" %>
   </div>
