@@ -13,3 +13,23 @@
     <%= f.submit "Add Comment", style: "background-color: green; color: white; padding: 5px 10px; border: none; cursor: pointer;" %>
   </div>
 <% end %>
+
+<!-- Make sure CKEditor script is loaded before this script -->
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const editorElements = document.querySelectorAll('.ckeditor');
+    editorElements.forEach(element => {
+      ClassicEditor.create(element)
+        .then(editor => {
+          console.log('CKEditor inicializado');
+        })
+        .catch(error => {
+          console.error('Error al inicializar CKEditor:', error);
+        });
+    });
+  });
+  
+
+
+</script>

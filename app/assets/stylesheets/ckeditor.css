@@ -1,0 +1,28 @@
+/* Estilos para el área de edición */
+.ck-editor__editable_inline {
+  min-height: 200px;
+  padding: 15px;
+  font-size: 16px;
+  line-height: 1.6;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para la barra de herramientas */
+.ck-toolbar {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-bottom: none;
+  border-radius: 5px 5px 0 0;
+}
+
+/* Estilos para los botones de la barra de herramientas */
+.ck-button {
+  color: #495057;
+  transition: background-color 0.2s ease;
+}
+
+.ck-button:hover {
+  background-color: #e2e6ea;
+}
