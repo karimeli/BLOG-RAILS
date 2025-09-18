@@ -21,6 +21,7 @@ gem "jbuilder"
 gem "bcrypt"
 gem "devise"
 gem "ckeditor"
+gem "carrierwave"
 
 
 
