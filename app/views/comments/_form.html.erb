@@ -14,13 +14,17 @@
   </div>
 <% end %>
 
-<!-- Make sure CKEditor script is loaded before this script -->
+<!-- Hacer que el script de CKEditor se cargue antes de este script -->
 <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     const editorElements = document.querySelectorAll('.ckeditor');
     editorElements.forEach(element => {
-      ClassicEditor.create(element)
+      ClassicEditor.create(element, {
+        ckfinder: {
+          uploadUrl: '/comments/upload_image'  // Ruta para cargar imágenes
+        }
+      })
         .then(editor => {
           console.log('CKEditor inicializado');
         })
@@ -29,7 +33,4 @@
         });
     });
   });
-  
-
-
 </script>
