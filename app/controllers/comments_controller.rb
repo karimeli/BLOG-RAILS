@@ -4,19 +4,38 @@ class CommentsController < ApplicationController
   before_action :set_post
   before_action :set_comment, only: [ :edit, :update, :destroy ]
 
+  # Acción para mostrar el formulario de edición de comentario
+  def edit
+    # La acción edit no necesita hacer nada, solo mostrar el formulario
+  end
+
+  # Acción para actualizar el comentario
+  def update
+    if @comment.update(comment_params)
+      redirect_to @post, notice: "Comment was successfully updated."
+    else
+      render :edit
+    end
+  end
+
+  # Acción para eliminar el comentario
+  def destroy
+    @comment.destroy
+    redirect_to @post, notice: "Comment was successfully destroyed."
+  end
+
   # Acción para manejar la carga de imágenes
   def upload_image
-    # Crear un nuevo comentario para manejar la carga de la imagen
     @comment = Comment.new(comment_params)
 
     if @comment.save
-      render json: { uploaded: true, url: @comment.image.url }  # Enviar la URL de la imagen subida
+      render json: { uploaded: true, url: @comment.image.url }
     else
       render json: { uploaded: false, error: "Error al cargar la imagen" }
     end
   end
 
-  # Acción de creación de comentario
+  # Acción para crear un comentario
   def create
     @comment = current_user.comments.build(comment_params)
     @comment.post = @post
