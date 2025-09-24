@@ -1,9 +1,9 @@
 # app/uploaders/image_uploader.rb
 class ImageUploader < CarrierWave::Uploader::Base
-  storage :file  # Puedes cambiar esto a :fog si estás utilizando un servicio como Amazon S3
+  storage :file
 
   # Define el tipo de archivo que quieres permitir
-  def extension_whitelist
+  def extension_allowlist
     %w[jpg jpeg gif png bmp]
   end
 end
