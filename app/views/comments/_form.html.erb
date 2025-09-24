@@ -14,14 +14,24 @@
   </div>
 <% end %>
 
+
 <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     const editorElements = document.querySelectorAll('.ckeditor');
+    // Obtener el token CSRF de la meta tag
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+
     editorElements.forEach(element => {
       ClassicEditor.create(element, {
         ckfinder: {
-          uploadUrl: '/comments/upload_image'  // Ruta para cargar imágenes
+          // Configurar el URL y los encabezados para incluir el token CSRF
+          uploadUrl: '/comments/upload_image',
+          options: {
+            headers: {
+              'X-CSRF-Token': csrfToken
+            }
+          }
         }
       })
         .then(editor => {
@@ -33,3 +43,4 @@
     });
   });
 </script>
+

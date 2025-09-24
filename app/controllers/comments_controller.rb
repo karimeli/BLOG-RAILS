@@ -1,7 +1,10 @@
 # app/controllers/comments_controller.rb
 class CommentsController < ApplicationController
+  # No requerir token para la acción de subir imágenes, ya que CKEditor no lo envía
+  skip_before_action :verify_authenticity_token, only: [ :upload_image ]
+
   before_action :authenticate_user!
-  before_action :set_post
+  before_action :set_post, except: [ :upload_image ]
   before_action :set_comment, only: [ :edit, :update, :destroy ]
 
   # Acción para mostrar el formulario de edición de comentario
