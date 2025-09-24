@@ -20,16 +20,21 @@
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     const editorElements = document.querySelectorAll('.ckeditor');
-
+    
     editorElements.forEach(element => {
       ClassicEditor.create(element, {
         toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', '|', 'imageUpload', 'insertTable', 'mediaEmbed', 'undo', 'redo' ],
         ckfinder: {
-          // Usamos la ruta del motor de CKEditor
           uploadUrl: '/ckeditor/pictures'
         }
       })
       .then(editor => {
+        const form = element.closest('form');
+        
+        form.addEventListener('submit', function() {
+          element.value = editor.getData();
+        });
+        
         console.log('CKEditor inicializado');
       })
       .catch(error => {
