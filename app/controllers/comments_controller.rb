@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   before_action :set_post, except: [ :upload_image ]
   before_action :set_comment, only: [ :edit, :update, :destroy ]
 
-  # --- OTRAS ACCIONES (edit, update, destroy) ---
+
   def edit
   end
 
@@ -23,21 +23,20 @@ class CommentsController < ApplicationController
   end
   # ---------------------------------------------
 
-  # === ACCIÓN CORREGIDA PARA SUBIR IMÁGENES ===
+
   def upload_image
-    # Usamos el modelo Ckeditor::Picture directamente para manejar la imagen
     @picture = Ckeditor::Picture.new
-    @picture.data = params[:upload] # Asignamos el archivo subido
+    @picture.data = params[:upload]
 
     # Guardamos la imagen
     if @picture.save
-      # Si se guarda, respondemos con el JSON que CKEditor espera
+
       render json: {
         uploaded: true,
         url: @picture.url
       }
     else
-      # Si falla, respondemos con un error claro
+
       render json: {
         uploaded: false,
         error: { message: "Upload failed" }
@@ -45,7 +44,7 @@ class CommentsController < ApplicationController
     end
   end
 
-  # Acción para crear un comentario (esta no cambia)
+
   def create
     @comment = current_user.comments.build(comment_params)
     @comment.post = @post
