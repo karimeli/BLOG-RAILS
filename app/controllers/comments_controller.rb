@@ -5,12 +5,10 @@ class CommentsController < ApplicationController
   before_action :set_post, except: [ :upload_image ]
   before_action :set_comment, only: [ :edit, :update, :destroy ]
 
-  # Acción para mostrar el formulario de edición de comentario
+  # --- OTRAS ACCIONES (edit, update, destroy) ---
   def edit
-    # La acción edit no necesita hacer nada, solo mostrar el formulario
   end
 
-  # Acción para actualizar el comentario
   def update
     if @comment.update(comment_params)
       redirect_to @post, notice: "Comment was successfully updated."
@@ -19,25 +17,35 @@ class CommentsController < ApplicationController
     end
   end
 
-  # Acción para eliminar el comentario
   def destroy
     @comment.destroy
     redirect_to @post, notice: "Comment was successfully destroyed."
   end
+  # ---------------------------------------------
 
-  # Acción para manejar la carga de imágenes
+  # === ACCIÓN CORREGIDA PARA SUBIR IMÁGENES ===
   def upload_image
-    @comment = Comment.new
-    @comment.image = params[:upload]
+    # Usamos el modelo Ckeditor::Picture directamente para manejar la imagen
+    @picture = Ckeditor::Picture.new
+    @picture.data = params[:upload] # Asignamos el archivo subido
 
-    if @comment.save
-      render json: { uploaded: true, url: @comment.image.url }
+    # Guardamos la imagen
+    if @picture.save
+      # Si se guarda, respondemos con el JSON que CKEditor espera
+      render json: {
+        uploaded: true,
+        url: @picture.url
+      }
     else
-      render json: { uploaded: false, error: "Error al cargar la imagen" }
+      # Si falla, respondemos con un error claro
+      render json: {
+        uploaded: false,
+        error: { message: "Upload failed" }
+      }, status: :unprocessable_entity
     end
   end
 
-  # Acción para crear un comentario
+  # Acción para crear un comentario (esta no cambia)
   def create
     @comment = current_user.comments.build(comment_params)
     @comment.post = @post
@@ -53,7 +61,7 @@ class CommentsController < ApplicationController
   private
 
   def set_post
-    @post = Post.find(params[:post_id])
+    @post = Post.find_by(id: params[:post_id])
   end
 
   def set_comment

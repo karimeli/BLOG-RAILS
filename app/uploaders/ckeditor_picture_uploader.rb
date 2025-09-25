@@ -10,12 +10,12 @@ class CkeditorPictureUploader < CarrierWave::Uploader::Base
     "uploads/ckeditor/pictures/#{model.id}"
   end
 
-  # Sanitize the filename to make it URL-friendly and secure.
-  # This version fixes the issue by ensuring the method doesn't return a nil value.
+  # Versión corregida y final del método filename
   def filename
     if original_filename.present?
-      sanitized = super.gsub(/[^0-9A-Za-z.\-]/, "_")
-      "#{File.basename(sanitized, '.*').parameterize}.#{file.extension.downcase}"
+      "#{File.basename(original_filename, '.*').parameterize}#{File.extname(original_filename).downcase}"
+    else
+      super
     end
   end
 
@@ -27,7 +27,9 @@ class CkeditorPictureUploader < CarrierWave::Uploader::Base
     process resize_to_limit: [ 800, 800 ]
   end
 
+  # Permite cualquier tipo de archivo de imagen
   def extension_allowlist
-    Ckeditor.image_file_types
+    # Al devolver nil, se eliminan las restricciones de formato.
+    nil
   end
 end

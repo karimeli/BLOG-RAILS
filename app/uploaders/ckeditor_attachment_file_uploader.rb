@@ -11,7 +11,9 @@ class CkeditorAttachmentFileUploader < CarrierWave::Uploader::Base
     "uploads/ckeditor/attachments/#{model.id}"
   end
 
+  # Permite cualquier tipo de archivo adjunto.
   def extension_allowlist
-    Ckeditor.attachment_file_types
+    # Al devolver nil, se eliminan las restricciones de formato.
+    nil
   end
 end

@@ -24,8 +24,10 @@
     editorElements.forEach(element => {
       ClassicEditor.create(element, {
         toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', '|', 'imageUpload', 'insertTable', 'mediaEmbed', 'undo', 'redo' ],
+        // A C C I Ó N   C O R R E G I D A
         ckfinder: {
-          uploadUrl: '/ckeditor/pictures'
+          // Cambiamos la URL para que apunte a tu controlador personalizado
+          uploadUrl: '/comments/upload_image'
         }
       })
       .then(editor => {
