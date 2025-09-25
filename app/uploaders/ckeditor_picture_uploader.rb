@@ -1,4 +1,3 @@
-# app/uploaders/ckeditor_picture_uploader.rb
 # frozen_string_literal: true
 
 class CkeditorPictureUploader < CarrierWave::Uploader::Base
@@ -12,7 +11,6 @@ class CkeditorPictureUploader < CarrierWave::Uploader::Base
   end
 
   def filename
-    # Sanitiza el nombre del archivo para eliminar caracteres especiales
     "#{super.gsub(/[^0-9A-Za-z.\-]/, '_')}" if original_filename
   end
 
