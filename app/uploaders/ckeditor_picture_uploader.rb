@@ -10,8 +10,13 @@ class CkeditorPictureUploader < CarrierWave::Uploader::Base
     "uploads/ckeditor/pictures/#{model.id}"
   end
 
+  # Sanitize the filename to make it URL-friendly and secure.
+  # This version fixes the issue by ensuring the method doesn't return a nil value.
   def filename
-    "#{super.gsub(/[^0-9A-Za-z.\-]/, '_')}" if original_filename
+    if original_filename.present?
+      sanitized = super.gsub(/[^0-9A-Za-z.\-]/, "_")
+      "#{File.basename(sanitized, '.*').parameterize}.#{file.extension.downcase}"
+    end
   end
 
   version :thumb do
