@@ -1,5 +1,5 @@
 <div class="comment">
-  <%= form_for([@post, @post.comments.build]) do |f| %>
+  <%= form_for([@post, @post.comments.build], multipart: true) do |f| %>
     <div class="field">
       <%= f.label :commenter %><br />
       <%= f.text_field :commenter %>
@@ -7,7 +7,12 @@
 
     <div class="field">
       <%= f.label :body %><br />
-      <%= f.text_area :body, class: "ckeditor", rows: 5 %> 
+      <%= f.text_area :body, class: "ckeditor", rows: 5 %>
+    </div>
+
+    <div class="field">
+      <%= f.label :image %><br />
+      <%= f.file_field :image %>
     </div>
 
     <div class="actions">
@@ -23,12 +28,7 @@
     
     editorElements.forEach(element => {
       ClassicEditor.create(element, {
-        toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', '|', 'imageUpload', 'insertTable', 'mediaEmbed', 'undo', 'redo' ],
-        // A C C I Ó N   C O R R E G I D A
-        ckfinder: {
-          // Cambiamos la URL para que apunte a tu controlador personalizado
-          uploadUrl: '/comments/upload_image'
-        }
+        toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', '|', 'insertTable', 'mediaEmbed', 'undo', 'redo' ],
       })
       .then(editor => {
         const form = element.closest('form');
@@ -36,7 +36,7 @@
         form.addEventListener('submit', function() {
           element.value = editor.getData();
         });
-        
+       
         console.log('CKEditor inicializado');
       })
       .catch(error => {

@@ -1,6 +1,5 @@
 # app/controllers/comments_controller.rb
 class CommentsController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [ :upload_image ]
   before_action :authenticate_user!
   before_action :set_post, except: [ :upload_image ]
   before_action :set_comment, only: [ :edit, :update, :destroy ]
@@ -22,28 +21,6 @@ class CommentsController < ApplicationController
     redirect_to @post, notice: "Comment was successfully destroyed."
   end
   # ---------------------------------------------
-
-
-  def upload_image
-    @picture = Ckeditor::Picture.new
-    @picture.data = params[:upload]
-
-    # Guardamos la imagen
-    if @picture.save
-
-      render json: {
-        uploaded: true,
-        url: @picture.url
-      }
-    else
-
-      render json: {
-        uploaded: false,
-        error: { message: "Upload failed" }
-      }, status: :unprocessable_entity
-    end
-  end
-
 
   def create
     @comment = current_user.comments.build(comment_params)

@@ -6,11 +6,5 @@ Rails.application.routes.draw do
     resources :comments, only: [ :create, :edit, :update, :destroy ]
   end
 
-  resources :comments do
-    collection do
-      post :upload_image
-    end
-  end
-
   root "posts#index"
 end
