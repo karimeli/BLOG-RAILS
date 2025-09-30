@@ -11,12 +11,13 @@
     </div>
 
     <div class="field">
-      <%= f.label :image %><br />
-      <%= f.file_field :image %>
+      <%= f.label :image, "Add Image", class: "custom-file-upload" %><br />
+      <%= f.file_field :image, style: "display:none;" %>
     </div>
 
     <div class="actions">
-      <%= f.submit "Add Comment", style: "background-color: green; color: white; padding: 5px 10px; border: none; cursor: pointer;" %>
+      <%= 
+ f.submit "Add Comment", style: "background-color: green; color: white; padding: 5px 10px; border: none; cursor: pointer;" %>
     </div>
   <% end %>
 </div>
@@ -33,7 +34,8 @@
       .then(editor => {
         const form = element.closest('form');
         
-        form.addEventListener('submit', function() {
+       
+ form.addEventListener('submit', function() {
           element.value = editor.getData();
         });
        
