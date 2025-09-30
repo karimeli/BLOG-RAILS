@@ -9,6 +9,7 @@
   <%= csp_meta_tag %>
 
   <%= stylesheet_link_tag "application", media: "all" %>
+  <%= stylesheet_link_tag "user_menu", media: "all" %>
 
   <% if File.exist?(Rails.root.join('app/assets/stylesheets', "#{controller_name}.css")) %>
     <%= stylesheet_link_tag controller_name, media: "all" %>
@@ -21,7 +22,7 @@
   <% if controller_name == 'posts' && ['show', 'edit', 'destroy'].include?(action_name) && File.exist?(Rails.root.join('app/assets/stylesheets', "comments.css")) %>
     <%= stylesheet_link_tag "comments", media: "all" %>
   <% end %>
-
+  
   <% if controller_name == 'posts' && ['new', 'edit'].include?(action_name) %>
     <%= stylesheet_link_tag "forms", media: "all" %>
   <% end %>

@@ -4,9 +4,9 @@
  *= require comments
  *= require posts
  *= require forms
-  *= require auth
-   *= require ckeditor
-    *= require user_menu
+ *= require auth
+ *= require ckeditor
+ *= require user_menu
 */
 /* Estilo básico para el área de texto de CKEditor */
 .ckeditor {
