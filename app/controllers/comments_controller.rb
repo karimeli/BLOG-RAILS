@@ -1,7 +1,7 @@
 # app/controllers/comments_controller.rb
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_post, except: [ :upload_image ]
+  before_action :set_post
   before_action :set_comment, only: [ :edit, :update, :destroy ]
 
 
