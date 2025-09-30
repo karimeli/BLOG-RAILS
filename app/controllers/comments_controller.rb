@@ -1,4 +1,4 @@
-# app/controllers/comments_controller.rb
+
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post
@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
     @comment.destroy
     redirect_to @post, notice: "Comment was successfully destroyed."
   end
-  # ---------------------------------------------
+
 
   def create
     @comment = current_user.comments.build(comment_params)
