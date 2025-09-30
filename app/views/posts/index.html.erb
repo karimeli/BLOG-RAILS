@@ -1,37 +1,26 @@
-<h1>Posts</h1>
+<div class="posts-header">
+  <h1>Posts</h1>
+  <%= link_to 'New Post', new_post_path, class: "new-post-button" %>
+</div>
 
-<table style="width: 100%; border-collapse: collapse; background: #FFF; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-  <thead>
-    <tr style="background-color: #4CAF50; color: white; text-align: left;">
-      <th style="padding: 10px;">User</th>
-      <th style="padding: 10px;">Title</th>
-      <th style="padding: 10px;">Content</th>
-      <th style="padding: 10px;"></th>
-      <th style="padding: 10px;"></th>
-      <th style="padding: 10px;"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr style="border-bottom: 1px solid #ddd;">
-        <!-- Verifica si el post tiene un usuario asociado -->
-        <td style="padding: 10px;">
-          <% if post.user %>
-            <%= post.user.email %>  <!-- Muestra el email del usuario si está asociado -->
-          <% else %>
-            No user available  <!-- Muestra un mensaje si no hay usuario asociado -->
-          <% end %>
-        </td>
-        <td style="padding: 10px;"><%= post.title %></td>
-        <td style="padding: 10px;"><%= post.content %></td>
-        <td style="padding: 10px;"><%= link_to 'Show', post, style: "color: #2196F3; text-decoration: none;" %></td>
-        <td style="padding: 10px;"><%= link_to 'Edit', edit_post_path(post), style: "color: #FFC107; text-decoration: none;" %></td>
-        <td style="padding: 10px;"><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, style: "color: #F44336; text-decoration: none;" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="posts-container">
+  <% @posts.each do |post| %>
+    <div class="post-card">
+      <div class="post-card-body">
+        <h2 class="post-title"><%= post.title %></h2>
+        
+        <% if post.user %>
+          <p class="post-author">by <%= post.user.email %></p>
+        <% end %>
 
-<br />
+        <p class="post-content"><%= truncate(post.content, length: 150) %></p>
+      </div>
 
-<%= link_to 'New Post', new_post_path, style: "display: inline-block; padding: 10px 20px; background: #4CAF50; color: white; text-decoration: none; border-radius: 5px;" %>
+      <div class="post-card-actions">
+        <%= link_to 'Show', post, class: "action-link show" %>
+        <%= link_to 'Edit', edit_post_path(post), class: "action-link edit" %>
+        <%= link_to 'Destroy', post, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "action-link destroy" %>
+      </div>
+    </div>
+  <% end %>
+</div>

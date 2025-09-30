@@ -1,97 +1,261 @@
-/* Estilos para la lista de publicaciones */
-.posts-list {
-  width: 100%;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;  /* Transición suave para la sombra */
+/* Contenedor principal de la página de posts */
+body {
+  background-color: #f4f7f6;
 }
 
-.posts-list:hover {
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);  /* Sombra más pronunciada al pasar el mouse */
+.posts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-.posts-list h1 {
-  text-align: center;
-  font-size: 2.5rem;  /* Tamaño de fuente más grande */
-  color: #4CAF50;
-  margin-bottom: 20px;  /* Espacio abajo del título */
-  font-weight: bold;
-}
-
-.posts-list table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;  /* Espacio arriba de la tabla */
-}
-
-.posts-list table th,
-.posts-list table td {
-  padding: 12px;
-  text-align: left;
-  font-size: 1rem;  /* Ajuste del tamaño de la fuente */
-  color: #555;
-  border-bottom: 1px solid #ddd;
-}
-
-.posts-list table th {
-  background-color: #4CAF50;
-  color: white;
-  font-size: 1.1rem;  /* Título de la tabla un poco más grande */
-}
-
-.posts-list table tr:hover {
-  background-color: #f1f1f1;  /* Color de fondo al pasar el mouse sobre las filas */
+.posts-header h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin: 0;
 }
 
 /* Botón para crear un nuevo post */
-.posts-list .new-post-button {
+.new-post-button {
   display: inline-block;
   padding: 12px 24px;
   background: #4CAF50;
   color: white;
   text-decoration: none;
-  border-radius: 5px;
-  font-size: 1.1rem;
+  border-radius: 8px;
+  font-size: 1rem;
   font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.3s ease;  /* Transiciones para el hover */
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.posts-list .new-post-button:hover {
+.new-post-button:hover {
   background: #45a049;
-  transform: scale(1.05);  /* Efecto de escala al pasar el mouse */
+  transform: translateY(-2px);
 }
 
-
-
-.post-tags span {
-  margin-right: 10px;
-  padding: 6px 12px;
-  background-color: #e2e6ea;
-  border-radius: 16px;
-  transition: background-color 0.3s ease, transform 0.3s ease;  /* Transiciones para los tags */
+/* Contenedor de las tarjetas de post */
+.posts-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
 }
 
-.post-tags span:hover {
-  background-color: #007BFF;
-  color: white;
-  transform: scale(1.1);  /* Efecto de escala al pasar el mouse */
+/* Estilo individual de cada tarjeta de post */
+.post-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Responsividad */
+.post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.post-card-body {
+  padding: 20px;
+}
+
+.post-title {
+  font-size: 1.4rem;
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.post-author {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 15px;
+}
+
+.post-content {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Acciones en la tarjeta (Show, Edit, Destroy) */
+.post-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px 20px;
+  background-color: #fafafa;
+  border-top: 1px solid #f0f0f0;
+  border-radius: 0 0 10px 10px;
+}
+
+.action-link {
+  text-decoration: none;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-left: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.action-link.show {
+  color: #2196F3;
+}
+.action-link.show:hover {
+  background-color: #e3f2fd;
+}
+
+.action-link.edit {
+  color: #FFC107;
+}
+.action-link.edit:hover {
+  background-color: #fff8e1;
+}
+
+.action-link.destroy {
+  color: #F44336;
+}
+.action-link.destroy:hover {
+  background-color: #ffebee;
+}
+
+/* Responsividad para pantallas pequeñas */
 @media (max-width: 768px) {
-  .posts-list h1 {
-    font-size: 2rem;  /* Ajusta el tamaño del título en pantallas pequeñas */
+  .posts-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
   }
+}/* Contenedor principal de la página de posts */
+body {
+  background-color: #f4f7f6;
+}
 
-  .posts-list table th,
-  .posts-list table td {
-    font-size: 0.9rem;  /* Ajusta el tamaño de la fuente en la tabla */
-  }
+.posts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
 
-  .posts-list .new-post-button {
-    padding: 10px 20px;  /* Ajusta el tamaño del botón */
-    font-size: 1rem;
+.posts-header h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin: 0;
+}
+
+/* Botón para crear un nuevo post */
+.new-post-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.new-post-button:hover {
+  background: #45a049;
+  transform: translateY(-2px);
+}
+
+/* Contenedor de las tarjetas de post */
+.posts-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+/* Estilo individual de cada tarjeta de post */
+.post-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.post-card-body {
+  padding: 20px;
+}
+
+.post-title {
+  font-size: 1.4rem;
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.post-author {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 15px;
+}
+
+.post-content {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Acciones en la tarjeta (Show, Edit, Destroy) */
+.post-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px 20px;
+  background-color: #fafafa;
+  border-top: 1px solid #f0f0f0;
+  border-radius: 0 0 10px 10px;
+}
+
+.action-link {
+  text-decoration: none;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-left: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.action-link.show {
+  color: #2196F3;
+}
+.action-link.show:hover {
+  background-color: #e3f2fd;
+}
+
+.action-link.edit {
+  color: #FFC107;
+}
+.action-link.edit:hover {
+  background-color: #fff8e1;
+}
+
+.action-link.destroy {
+  color: #F44336;
+}
+.action-link.destroy:hover {
+  background-color: #ffebee;
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+  .posts-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
   }
 }

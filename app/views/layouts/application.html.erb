@@ -8,36 +8,61 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
-  <!-- Carga los estilos globales -->
   <%= stylesheet_link_tag "application", media: "all" %>
 
-  <!-- Cargar estilos específicos para cada controlador si existe el archivo -->
   <% if File.exist?(Rails.root.join('app/assets/stylesheets', "#{controller_name}.css")) %>
     <%= stylesheet_link_tag controller_name, media: "all" %>
   <% end %>
 
-  <!-- Cargar el archivo auth.css solo en las vistas 'new', 'edit', 'destroy' -->
   <% if ['sessions', 'registrations'].include?(controller_name) && ['new', 'edit', 'destroy'].include?(action_name) %>
     <%= stylesheet_link_tag "auth", media: "all" %>
   <% end %>
 
-  <!-- Cargar el archivo comments.css solo en las vistas 'show', 'edit', 'destroy' -->
   <% if controller_name == 'posts' && ['show', 'edit', 'destroy'].include?(action_name) && File.exist?(Rails.root.join('app/assets/stylesheets', "comments.css")) %>
     <%= stylesheet_link_tag "comments", media: "all" %>
   <% end %>
 
-  <!-- Cargar el archivo forms.css solo en las vistas 'new' y 'edit' -->
   <% if controller_name == 'posts' && ['new', 'edit'].include?(action_name) %>
     <%= stylesheet_link_tag "forms", media: "all" %>
   <% end %>
-
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
 
 <body style="background: #EEEEEE; font-family: Arial, sans-serif; margin: 0; padding: 20px;">
 
-  <%= yield %> <!-- Aquí se insertan las vistas específicas -->
+  <% if user_signed_in? %>
+    <div class="user-menu-container">
+      <div class="user-icon">
+        <i class="fa fa-user"></i>
+      </div>
+      <div class="dropdown-menu">
+        <%= button_to "Cerrar Sesión", destroy_user_session_path, method: :delete, class: "logout-button" %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= yield %>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const userIcon = document.querySelector('.user-icon');
+      const dropdownMenu = document.querySelector('.dropdown-menu');
+
+      if (userIcon) {
+        userIcon.addEventListener('click', function() {
+          dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        });
+
+        document.addEventListener('click', function(event) {
+          if (!userIcon.contains(event.target)) {
+            dropdownMenu.style.display = 'none';
+          }
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>
-
