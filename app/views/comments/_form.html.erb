@@ -1,5 +1,6 @@
 <div class="comment">
-  <%= form_for([@post, @post.comments.build], multipart: true) do |f| %>
+  <%# Se utiliza form_with, que es el estándar moderno en Rails para formularios %>
+  <%= form_with(model: [@post, @post.comments.build], multipart: true) do |f| %>
     <div class="field">
       <%= f.label :commenter %><br />
       <%= f.text_field :commenter %>
@@ -12,12 +13,12 @@
 
     <div class="field">
       <%= f.label :image, "Add Image", class: "custom-file-upload" %><br />
+      <%# El campo de archivo ahora funcionará correctamente con form_with %>
       <%= f.file_field :image, style: "display:none;" %>
     </div>
 
     <div class="actions">
-      <%= 
- f.submit "Add Comment", style: "background-color: green; color: white; padding: 5px 10px; border: none; cursor: pointer;" %>
+      <%= f.submit "Add Comment", style: "background-color: green; color: white; padding: 5px 10px; border: none; cursor: pointer;" %>
     </div>
   <% end %>
 </div>
@@ -34,8 +35,7 @@
       .then(editor => {
         const form = element.closest('form');
         
-       
- form.addEventListener('submit', function() {
+        form.addEventListener('submit', function() {
           element.value = editor.getData();
         });
        
