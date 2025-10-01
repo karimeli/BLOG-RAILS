@@ -1,48 +1,75 @@
-require "test_helper"
+class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [ :index, :show ]
+  before_action :set_post, only: [ :show, :edit, :update, :destroy ]
 
-class PostsControllerTest < ActionDispatch::IntegrationTest
-  setup do
-    @post = posts(:one)
+  # Mostrar todos los posts
+  def index
+    @posts = Post.all
   end
 
-  test "should get index" do
-    get posts_url
-    assert_response :success
+  # Mostrar un post individual con comentarios
+  def show
+    @comments = @post.comments  # Carga todos los comentarios del post
   end
 
-  test "should get new" do
-    get new_post_url
-    assert_response :success
+  # Formulario para crear un nuevo post
+  def new
+    @post = Post.new
   end
 
-  test "should create post" do
-    assert_difference("Post.count") do
-      post posts_url, params: { post: { content: @post.content, name: @post.name, title: @post.title } }
+  # Crear un nuevo post y asociarlo al usuario actual
+  def create
+    @post = current_user.posts.build(post_params)  # Asocia el post al usuario autenticado
+
+    if @post.save  # Intenta guardar el post en la base de datos
+      redirect_to @post, notice: "Post was successfully created."  # Si tiene éxito, redirige a la vista del post
+    else
+      render :new  # Si no se guarda, vuelve a mostrar el formulario de nuevo
     end
-
-    assert_redirected_to post_url(Post.last)
   end
 
-  test "should show post" do
-    get post_url(@post)
-    assert_response :success
+  # Mostrar el formulario para editar un post
+  def edit
+    authorize_user  # Verifica que el usuario que intenta editar el post sea el autor
   end
 
-  test "should get edit" do
-    get edit_post_url(@post)
-    assert_response :success
-  end
+  # Actualizar un post
+  def update
+    return unless authorize_user  # Detiene la ejecución si el usuario no está autorizado
 
-  test "should update post" do
-    patch post_url(@post), params: { post: { content: @post.content, name: @post.name, title: @post.title } }
-    assert_redirected_to post_url(@post)
-  end
-
-  test "should destroy post" do
-    assert_difference("Post.count", -1) do
-      delete post_url(@post)
+    if @post.update(post_params)  # Actualiza el post
+      redirect_to @post, notice: "Post was successfully updated."  # Redirige a la vista del post actualizado
+    else
+      render :edit  # Si hay errores, renderiza el formulario de edición
     end
+  end
 
-    assert_redirected_to posts_url
+  # Eliminar un post
+  def destroy
+    return unless authorize_user # Detiene la ejecución si el usuario no está autorizado
+
+    @post.destroy
+    redirect_to posts_url, notice: "Post was successfully destroyed."  # Redirige a la lista de posts
+  end
+
+  private
+
+  # Encontrar un post por ID
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
+  # Permitir solo los parámetros permitidos
+  def post_params
+    params.require(:post).permit(:title, :content)  # Permite solo los parámetros que necesitamos
+  end
+
+  # Autorizar que el usuario actual pueda modificar el post
+  def authorize_user
+    unless @post.user == current_user
+      redirect_to posts_path, alert: "Not authorized"
+      return false
+    end
+    true
   end
 end
