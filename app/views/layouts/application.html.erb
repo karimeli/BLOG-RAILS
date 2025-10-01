@@ -33,22 +33,12 @@
 
 <body style="background: #EEEEEE; font-family: Arial, sans-serif; margin: 0; padding: 20px;">
 
-  <% if user_signed_in? %>
-    <div class="user-menu-container">
-      <div class="user-icon">
-        <i class="fa fa-user"></i>
-      </div>
-      <div class="dropdown-menu">
-        <%= button_to "Cerrar Sesión", destroy_user_session_path, method: :delete, class: "logout-button" %>
-      </div>
-    </div>
-  <% end %>
-
   <%= yield %>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const userIcon = document.querySelector('.user-icon');
+  
       const dropdownMenu = document.querySelector('.dropdown-menu');
 
       if (userIcon) {

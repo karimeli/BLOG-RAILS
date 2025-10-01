@@ -1,9 +1,6 @@
 /* Contenedor principal del menú de usuario */
 .user-menu-container {
-  position: fixed; /* Posición fija en la ventana */
-  top: 0px;
-  left:0px; /* Movido a la izquierda */
-  z-index: 1000;
+  position: relative; /* Cambiado de fixed a relative */
 }
 
 /* Estilo del ícono de usuario */
@@ -31,7 +28,7 @@
 .dropdown-menu {
   display: none;
   position: absolute;
-  left: 0; /* Alineado a la izquierda del contenedor */
+  right: 0; /* Alineado a la derecha del contenedor */
   top: 55px;
   background-color: #fff;
   min-width: 160px;

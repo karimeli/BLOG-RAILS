@@ -35,7 +35,7 @@ class PostsController < ApplicationController
 
   # Actualizar un post
   def update
-    authorize_user  # Verifica que el usuario que intenta editar el post sea el autor
+    return unless authorize_user  # Detiene la ejecución si el usuario no está autorizado
 
     if @post.update(post_params)  # Actualiza el post
       redirect_to @post, notice: "Post was successfully updated."  # Redirige a la vista del post actualizado
@@ -46,7 +46,8 @@ class PostsController < ApplicationController
 
   # Eliminar un post
   def destroy
-    authorize_user  # Verifica que el usuario que intenta eliminar el post sea el autor
+    return unless authorize_user # Detiene la ejecución si el usuario no está autorizado
+
     @post.destroy
     redirect_to posts_url, notice: "Post was successfully destroyed."  # Redirige a la lista de posts
   end
@@ -65,6 +66,10 @@ class PostsController < ApplicationController
 
   # Autorizar que el usuario actual pueda modificar el post
   def authorize_user
-    redirect_to posts_path, alert: "Not authorized" unless @post.user == current_user
+    unless @post.user == current_user
+      redirect_to posts_path, alert: "Not authorized"
+      return false
+    end
+    true
   end
 end

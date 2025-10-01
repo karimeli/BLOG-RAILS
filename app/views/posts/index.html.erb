@@ -1,6 +1,18 @@
 <div class="posts-header">
   <h1>Posts</h1>
-  <%= link_to 'New Post', new_post_path, class: "new-post-button" %>
+  <div class="header-actions">
+    <%= link_to 'New Post', new_post_path, class: "new-post-button" %>
+    <% if user_signed_in? %>
+      <div class="user-menu-container">
+        <div class="user-icon">
+          <i class="fa fa-user"></i>
+        </div>
+        <div class="dropdown-menu">
+          <%= button_to "Cerrar Sesión", destroy_user_session_path, method: :delete, class: "logout-button" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 <div class="posts-container">

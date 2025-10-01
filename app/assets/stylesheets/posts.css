@@ -1,4 +1,3 @@
-
 body {
   background-color: #f4f7f6;
 }
@@ -18,134 +17,10 @@ body {
   margin: 0;
 }
 
-/* Botón para crear un nuevo post */
-.new-post-button {
-  display: inline-block;
-  padding: 12px 24px;
-  background: #4CAF50;
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: bold;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.new-post-button:hover {
-  background: #45a049;
-  transform: translateY(-2px);
-}
-
-/* Contenedor de las tarjetas de post */
-.posts-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 25px;
-}
-
-/* Estilo individual de cada tarjeta de post */
-.post-card {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+.header-actions {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.post-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-}
-
-.post-card-body {
-  padding: 20px;
-}
-
-.post-title {
-  font-size: 1.4rem;
-  margin: 0 0 10px 0;
-  color: #333;
-}
-
-.post-author {
-  font-size: 0.9rem;
-  color: #888;
-  margin-bottom: 15px;
-}
-
-.post-content {
-  font-size: 1rem;
-  color: #555;
-  line-height: 1.6;
-}
-
-/* Acciones en la tarjeta (Show, Edit, Destroy) */
-.post-card-actions {
-  display: flex;
-  justify-content: flex-end;
-  padding: 15px 20px;
-  background-color: #fafafa;
-  border-top: 1px solid #f0f0f0;
-  border-radius: 0 0 10px 10px;
-}
-
-.action-link {
-  text-decoration: none;
-  font-weight: 600;
-  padding: 5px 10px;
-  border-radius: 5px;
-  margin-left: 10px;
-  transition: background-color 0.2s ease;
-}
-
-.action-link.show {
-  color: #2196F3;
-}
-.action-link.show:hover {
-  background-color: #e3f2fd;
-}
-
-.action-link.edit {
-  color: #FFC107;
-}
-.action-link.edit:hover {
-  background-color: #fff8e1;
-}
-
-.action-link.destroy {
-  color: #F44336;
-}
-.action-link.destroy:hover {
-  background-color: #ffebee;
-}
-
-/* Responsividad para pantallas pequeñas */
-@media (max-width: 768px) {
-  .posts-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-  }
-}/* Contenedor principal de la página de posts */
-body {
-  background-color: #f4f7f6;
-}
-
-.posts-header {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.posts-header h1 {
-  font-size: 2.5rem;
-  color: #333;
-  margin: 0;
+  gap: 20px;
 }
 
 /* Botón para crear un nuevo post */
