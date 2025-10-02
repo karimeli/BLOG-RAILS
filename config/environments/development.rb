@@ -1,3 +1,5 @@
+# config/environments/development.rb
+
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
@@ -39,6 +41,20 @@ Rails.application.configure do
 
   # Set localhost to be used by links generated in mailer templates.
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+
+  # --- INICIO: SECCIÓN CORREGIDA ---
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              "smtp.gmail.com",
+    port:                 587,
+    domain:               "gmail.com",
+    user_name:            ENV["GMAIL_USERNAME"], # CORREGIDO: ENV en mayúsculas
+    password:             ENV["GMAIL_APP_PASSWORD"], # CORREGIDO: ENV en mayúsculas
+    authentication:       "plain",
+    enable_starttls_auto: true
+  }
+  # --- FIN: SECCIÓN CORREGIDA ---
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

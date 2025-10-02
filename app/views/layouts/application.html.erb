@@ -1,3 +1,5 @@
+<%# app/views/layouts/application.html.erb (ACTUALIZADO) %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +10,7 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
+  <%# Carga de Hojas de Estilo %>
   <%= stylesheet_link_tag "application", media: "all" %>
   <%= stylesheet_link_tag "user_menu", media: "all" %>
 
@@ -15,7 +18,7 @@
     <%= stylesheet_link_tag controller_name, media: "all" %>
   <% end %>
 
-  <% if ['sessions', 'registrations'].include?(controller_name) && ['new', 'edit', 'destroy'].include?(action_name) %>
+  <% if ['sessions', 'registrations', 'passwords'].include?(controller_name) %>
     <%= stylesheet_link_tag "auth", media: "all" %>
   <% end %>
 
@@ -28,32 +31,34 @@
   <% end %>
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
-
-<body style="background: #EEEEEE; font-family: Arial, sans-serif; margin: 0; padding: 20px;">
-
-  <%= yield %>
+<body>
+  <main class="main-container">
+    <%= yield %>
+  </main>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const userIcon = document.querySelector('.user-icon');
-  
       const dropdownMenu = document.querySelector('.dropdown-menu');
 
       if (userIcon) {
-        userIcon.addEventListener('click', function() {
+        userIcon.addEventListener('click', function(event) {
+          event.stopPropagation();
           dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
         });
 
         document.addEventListener('click', function(event) {
-          if (!userIcon.contains(event.target)) {
+          if (dropdownMenu && !userIcon.contains(event.target) && !dropdownMenu.contains(event.target)) {
             dropdownMenu.style.display = 'none';
           }
         });
       }
     });
   </script>
-
 </body>
 </html>
