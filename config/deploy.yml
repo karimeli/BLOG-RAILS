@@ -1,9 +1,7 @@
 service: blog
 image: karim848/blog
 
-servers:
-  web:
-    - 148.229.5.96
+
 
 registry:
   username: karim848
