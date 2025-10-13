@@ -1,11 +1,11 @@
 # config/initializers/devise.rb
 
 Devise.setup do |config|
- # ==> Mailer Configuration
- # ¡CAMBIO IMPORTANTE!
- # Configura la dirección de correo que Devise usará para enviar los correos.
- # Ahora tomará el valor de tu archivo .env
- config.mailer_sender = "karimcarlos32@gmail.com" # <-- REEMPLAZA ESTO
+  # ==> Mailer Configuration
+  # ¡CAMBIO IMPORTANTE!
+  # Configura la dirección de correo que Devise usará para enviar los correos.
+  # Ahora tomará el valor de tu archivo .env
+  config.mailer_sender = ENV["GMAIL_USERNAME"]
 
   # --- El resto de tu configuración activa ---
   require "devise/orm/active_record"

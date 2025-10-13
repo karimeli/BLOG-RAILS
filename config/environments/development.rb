@@ -46,13 +46,13 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-   address:              "smtp.gmail.com",
-  port:                 587,
-  domain:               "gmail.com",
-  user_name:            "karimcarlos32@gmail.com", # <-- REEMPLAZA ESTO
-  password:             "vpyy xugl tyua vlyt", # <-- REEMPLAZA ESTO
-  authentication:       "plain",
-  enable_starttls_auto: true
+    address:              "smtp.gmail.com",
+    port:                 587,
+    domain:               "gmail.com",
+    user_name:            ENV["GMAIL_USERNAME"], # CORREGIDO: ENV en mayúsculas
+    password:             ENV["GMAIL_APP_PASSWORD"], # CORREGIDO: ENV en mayúsculas
+    authentication:       "plain",
+    enable_starttls_auto: true
   }
   # --- FIN: SECCIÓN CORREGIDA ---
 
