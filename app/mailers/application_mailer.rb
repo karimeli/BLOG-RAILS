@@ -1,5 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  # Usa tu correo de Gmail como el remitente por defecto para toda la aplicación
-  default from: ENV["GMAIL_USERNAME"]
+default from: "karimcarlos32@gmail.com" # <-- REEMPLAZA ESTO
   layout "mailer"
 end
