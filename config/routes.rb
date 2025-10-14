@@ -6,5 +6,9 @@ Rails.application.routes.draw do
     resources :comments, only: [ :create, :edit, :update, :destroy ]
   end
 
-  root "posts#index"
+  # Aquí se define la nueva página de inicio
+  root "home#index"
+
+  # Ruta para el login
+  get "login", to: "devise/sessions#new"
 end
