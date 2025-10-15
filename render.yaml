@@ -1,7 +1,7 @@
 services:
   - type: web
     name: blog-rails # Puedes cambiar este nombre
-    env: docker
+    runtime: ruby
     region: oregon # O la región más cercana a ti
     plan: free # El plan gratuito es ideal para empezar
     branch: main
@@ -10,7 +10,7 @@ services:
       - key: RAILS_MASTER_KEY
         sync: false # Por seguridad, la introduciremos manualmente en Render
       - key: RAILS_SERVE_STATIC_FILES
-        value: true
+        value: "true"
     disk:
       name: sqlite-data # Nombre para tu disco
       mountPath: /var/data # Ruta donde se montará el disco
