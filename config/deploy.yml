@@ -15,6 +15,6 @@ volumes:
 builder:
   arch: amd64
 
-# ¡LA SECCIÓN QUE ACABAS DE AGREGAR!
+
 ssh:
   user: karim
