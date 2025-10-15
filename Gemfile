@@ -23,6 +23,8 @@ gem "devise"
 gem "ckeditor"
 gem "carrierwave"
 gem "mini_magick"
+# Usa pg en producción
+
 
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
