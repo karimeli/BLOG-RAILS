@@ -1,0 +1,20 @@
+service: blog
+image: karim848/blog
+
+
+
+registry:
+  username: karim848
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+volumes:
+  - "blog_storage:/rails/storage"
+  - "blog_db:/rails/db"
+
+builder:
+  arch: amd64
+
+# ¡LA SECCIÓN QUE ACABAS DE AGREGAR!
+ssh:
+  user: karim
