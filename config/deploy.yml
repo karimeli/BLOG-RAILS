@@ -5,12 +5,11 @@ image: karim848/blog
 servers:
   web:
     hosts:
-      - 192.168.0.29 # La IP de tu VM Debian
+    
 
 registry:
   username: karim848
-  password:
-    - KAMAL_REGISTRY_PASSWORD
+
 
 # Volúmenes para que los datos no se borren.
 volumes:
