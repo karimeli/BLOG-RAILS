@@ -1,20 +1,24 @@
 service: blog
 image: karim848/blog
 
-
+# Añade los servidores a los que vas a desplegar.
+servers:
+  web:
+    hosts:
+      - 192.168.0.29 # La IP de tu VM Debian
 
 registry:
   username: karim848
   password:
     - KAMAL_REGISTRY_PASSWORD
 
+# Volúmenes para que los datos no se borren.
 volumes:
-  - "blog_storage:/rails/storage"
-  - "blog_db:/rails/db"
+  - "storage:/rails/storage"
+
+# Corregimos el usuario SSH
+ssh:
+  user: user1 # El usuario que creaste en Debian
 
 builder:
   arch: amd64
-
-
-ssh:
-  user: karim
