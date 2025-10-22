@@ -1,67 +1,66 @@
+/* Tema Oscuro/Dorado */
 .home-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Altura completa de la ventana */
-  background: linear-gradient(135deg, #f0f4f8, #d9e2ec); /* Fondo degradado */
-  font-family: 'Arial', sans-serif;
+  height: 100vh;
+  background: #1a1a1a; /* Fondo oscuro */
+  font-family: Arial, sans-serif;
   text-align: center;
   padding: 20px;
-  box-sizing: border-box;  /* Asegura que el padding no afecte la altura */
+  box-sizing: border-box;
 }
 
 .home-title {
-  font-size: 3rem;  /* Mejor escalabilidad */
-  color: #1a73e8;
+  font-size: 3rem;
+  color: #ffffff; /* Blanco */
   margin-bottom: 20px;
   font-weight: bold;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.1); /* Sombra más suave */
+  text-shadow: none;
   line-height: 1.2;
-  letter-spacing: 1px; /* Un poco de espacio entre las letras */
+  letter-spacing: 1px;
 }
 
 .home-subtitle {
   font-size: 1.25rem;
-  color: #555;
+  color: #cccccc; /* Texto claro */
   margin-bottom: 40px;
-  line-height: 1.6;  /* Mejor separación entre líneas */
+  line-height: 1.6;
 }
 
 .home-link {
   display: inline-block;
   padding: 15px 35px;
-  background-color: #1a73e8;
-  color: white;
+  background-color: #b89b3e; /* Botón dorado */
+  color: #1a1a1a; /* Texto oscuro */
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: 4px;
   font-weight: bold;
   font-size: 1.125rem;
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 8px rgba(26, 115, 232, 0.3); /* Sombra suave para el enlace */
+  box-shadow: none;
 }
 
 .home-link:hover {
-  background-color: #155ab6;
+  background-color: #a08836; /* Dorado oscuro */
   transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(26, 115, 232, 0.5); /* Efecto de sombra más prominente */
+  box-shadow: none;
 }
 
 .home-link:active {
-  background-color: #0f4482;  /* Color más oscuro cuando el enlace se hace clic */
+  background-color: #897431;
 }
 
 @media (max-width: 768px) {
   .home-title {
-    font-size: 2.5rem; /* Ajuste en pantallas más pequeñas */
+    font-size: 2.5rem;
   }
-
   .home-subtitle {
-    font-size: 1rem; /* Ajuste en pantallas más pequeñas */
+    font-size: 1rem;
   }
-
   .home-link {
-    padding: 12px 30px;  /* Ajuste del tamaño del botón en pantallas pequeñas */
+    padding: 12px 30px;
     font-size: 1rem;
   }
 }

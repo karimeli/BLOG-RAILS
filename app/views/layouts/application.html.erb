@@ -8,6 +8,18 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
+  <%# --- INICIO DE LA MODIFICACIÓN --- %>
+  <%# Estilo global para el fondo oscuro y color de texto base %>
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: #cccccc;
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+    }
+  </style>
+  <%# --- FIN DE LA MODIFICACIÓN --- %>
+
   <%# Carga de Hojas de Estilo %>
   <%= stylesheet_link_tag "application", media: "all" %>
   <%= stylesheet_link_tag "user_menu", media: "all" %>
@@ -21,6 +33,7 @@
   <% end %>
 
   <% if controller_name == 'posts' && ['show', 'edit', 'destroy'].include?(action_name) && File.exist?(Rails.root.join('app/assets/stylesheets', "comments.css")) %>
+  
     <%= stylesheet_link_tag "comments", media: "all" %>
   <% end %>
   

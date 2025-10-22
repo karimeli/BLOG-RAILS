@@ -1,13 +1,6 @@
-/* app/assets/stylesheets/posts.css (ACTUALIZADO) */
+/* app/assets/stylesheets/posts.css (Tema Oscuro/Dorado) */
 
-/* Estilos Globales para la página */
-body {
-  background-color: #f8f9fa; /* Un fondo gris muy claro */
-  color: #212529;
-  font-family: 'Inter', sans-serif;
-  margin: 0;
-}
-
+/* Estilos Globales - 'body' ya está en el layout */
 .main-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -21,13 +14,13 @@ body {
   align-items: center;
   margin-bottom: 40px;
   padding-bottom: 20px;
-  border-bottom: 1px solid #dee2e6;
+  border-bottom: 1px solid #555555; /* Borde oscuro */
 }
 
 .posts-header h1 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #343a40;
+  color: #ffffff; /* Texto blanco */
   margin: 0;
 }
 
@@ -41,20 +34,20 @@ body {
 .new-post-button {
   display: inline-block;
   padding: 12px 24px;
-  background-color: #0d6efd; /* Azul brillante */
-  color: white;
+  background-color: #b89b3e; /* Dorado */
+  color: #1a1a1a; /* Texto oscuro */
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: 4px;
   font-size: 1rem;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(13, 110, 253, 0.2);
+  box-shadow: none;
 }
 
 .new-post-button:hover {
-  background-color: #0b5ed7;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(13, 110, 253, 0.3);
+  background-color: #a08836; /* Dorado oscuro */
+  transform: none;
+  box-shadow: none;
 }
 
 /* Contenedor de las tarjetas de post */
@@ -66,42 +59,42 @@ body {
 
 /* Estilo individual de cada tarjeta de post */
 .post-card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+  background: #2c2c2c; /* Fondo de UI oscuro */
+  border-radius: 8px;
+  box-shadow: none;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  overflow: hidden; /* Para que el borde superior se vea bien */
-  border-top: 4px solid #0d6efd; /* Acento de color */
+  transition: none;
+  overflow: hidden;
+  border-top: 4px solid #b89b3e; /* Acento dorado */
 }
 
 .post-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transform: none;
+  box-shadow: none;
 }
 
 .post-card-body {
   padding: 25px;
-  flex-grow: 1; /* Permite que el cuerpo crezca */
+  flex-grow: 1;
 }
 
 .post-title {
   font-size: 1.5rem;
   font-weight: 700;
   margin: 0 0 8px 0;
-  color: #212529;
+  color: #ffffff; /* Blanco */
 }
 
 .post-author {
   font-size: 0.875rem;
-  color: #6c757d;
+  color: #aaaaaa; /* Gris claro */
   margin-bottom: 20px;
 }
 
 .post-content {
   font-size: 1rem;
-  color: #495057;
+  color: #cccccc; /* Gris (color base) */
   line-height: 1.6;
 }
 
@@ -111,8 +104,8 @@ body {
   justify-content: flex-end;
   gap: 15px;
   padding: 20px 25px;
-  background-color: #f8f9fa;
-  border-top: 1px solid #e9ecef;
+  background-color: #333333; /* Fondo de acción poco más claro */
+  border-top: 1px solid #555555;
 }
 
 .action-link {
@@ -120,35 +113,35 @@ body {
   font-weight: 600;
   font-size: 0.875rem;
   padding: 6px 12px;
-  border-radius: 6px;
+  border-radius: 4px;
   transition: all 0.2s ease;
 }
 
 .action-link.show {
-  color: #0d6efd;
-  background-color: rgba(13, 110, 253, 0.1);
+  color: #b89b3e;
+  background-color: rgba(184, 155, 62, 0.1);
 }
 .action-link.show:hover {
-  background-color: rgba(13, 110, 253, 0.2);
+  background-color: rgba(184, 155, 62, 0.2);
 }
 
 .action-link.edit {
-  color: #ffc107;
-  background-color: rgba(255, 193, 7, 0.1);
+  color: #e6a23c; /* Naranja/dorado para editar */
+  background-color: rgba(230, 162, 60, 0.1);
 }
 .action-link.edit:hover {
-  background-color: rgba(255, 193, 7, 0.2);
+  background-color: rgba(230, 162, 60, 0.2);
 }
 
 .action-link.destroy {
-  color: #dc3545;
+  color: #dc3545; /* Rojo para destruir */
   background-color: rgba(220, 53, 69, 0.1);
 }
 .action-link.destroy:hover {
   background-color: rgba(220, 53, 69, 0.2);
 }
 
-/* Responsividad para pantallas pequeñas */
+/* Responsividad */
 @media (max-width: 768px) {
   .main-container {
     padding: 20px 15px;

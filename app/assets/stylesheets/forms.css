@@ -1,56 +1,58 @@
-/* Estilo para el mensaje de error */
+/* Estilo para el mensaje de error (Tema Oscuro/Dorado) */
 .error-message {
-  background: #f8d7da;
-  color: #721c24;
+  background: #b89b3e; /* Dorado */
+  color: #1a1a1a; /* Texto oscuro */
   padding: 15px;
-  border-radius: 8px;  /* Borde más redondeado */
+  border-radius: 4px;
   margin-bottom: 20px;
   font-size: 1rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
-  transition: opacity 0.3s ease;  /* Transición suave */
+  box-shadow: none;
+  transition: opacity 0.3s ease;
 }
 
 .error-message:hover {
-  opacity: 0.9;  /* Efecto suave cuando se pasa el mouse */
+  opacity: 0.9;
 }
 
 /* Estilos generales para los campos del formulario */
 .field {
   margin-bottom: 20px;
-  position: relative;  /* Necesario para posicionar el ícono de validación si lo usamos */
+  position: relative;
 }
 
 .field label {
   display: block;
   font-weight: 600;
-  color: #333;  /* Color más oscuro para la etiqueta */
-  margin-bottom: 5px;  /* Espacio entre la etiqueta y el campo */
+  color: #cccccc; /* Texto claro */
+  margin-bottom: 5px;
 }
 
 .field input,
 .field textarea {
   width: 100%;
-  padding: 10px;  /* Más espacio para mayor comodidad */
-  border: 1px solid #ccc;
-  border-radius: 8px;  /* Bordes más redondeados */
-  font-size: 1rem;  /* Asegura una fuente legible */
-  box-sizing: border-box;  /* Asegura que el padding no afecte el ancho */
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;  /* Transición para bordes y sombra */
+  padding: 10px;
+  border: 1px solid #555555; /* Borde oscuro */
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #1f1f1f; /* Fondo de input */
+  color: #f0f0f0; /* Texto de input */
 }
 
 .field input:focus,
 .field textarea:focus {
-  border-color: #4CAF50;  /* Bordes verdes al hacer foco */
-  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);  /* Sombra verde alrededor */
+  border-color: #b89b3e; /* Borde dorado al hacer foco */
+  box-shadow: 0 0 5px rgba(184, 155, 62, 0.5); /* Sombra dorada */
 }
 
 /* Estilo para el botón de envío */
 .actions input[type="submit"] {
   padding: 12px 30px;
-  background: #4CAF50;
-  color: white;
+  background: #b89b3e; /* Botón dorado */
+  color: #1a1a1a; /* Texto oscuro */
   border: none;
-  border-radius: 8px;
+  border-radius: 4px;
   font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
@@ -58,42 +60,41 @@
 }
 
 .actions input[type="submit"]:hover {
-  background-color: #45a049;
-  transform: scale(1.05);  /* Efecto de escala en el hover */
+  background-color: #a08836; /* Dorado oscuro */
+  transform: scale(1.02);
 }
 
 .actions input[type="submit"]:active {
-  background-color: #388e3c;  /* Color más oscuro al hacer clic */
+  background-color: #897431;
 }
 
-/* Estilo para los campos de texto con error */
+/* Campos con error */
 .field.error input,
 .field.error textarea {
-  border-color: #e74c3c;  /* Color de borde rojo para los campos con error */
-  box-shadow: 0 0 5px rgba(231, 76, 60, 0.3);  /* Sombra roja */
+  border-color: #e74c3c;
+  box-shadow: 0 0 5px rgba(231, 76, 60, 0.3);
 }
 
 .field.error label {
-  color: #e74c3c;  /* Color de etiqueta en rojo si hay error */
+  color: #e74c3c;
 }
 
-/* Estilos para los mensajes de ayuda */
+/* Texto de ayuda */
 .field .help-text {
   font-size: 0.9rem;
   color: #888;
   margin-top: 5px;
 }
 
-/* Responsividad: Ajustes para pantallas pequeñas */
+/* Responsividad */
 @media (max-width: 768px) {
   .field input,
   .field textarea {
-    font-size: 1rem;  /* Ajusta el tamaño de la fuente en pantallas pequeñas */
+    font-size: 1rem;
   }
 
   .actions input[type="submit"] {
-    padding: 10px 25px;  /* Ajusta el tamaño del botón */
+    padding: 10px 25px;
     font-size: 1rem;
   }
 }
-
