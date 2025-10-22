@@ -1,63 +1,69 @@
-/* Contenedor General de Autenticación */
+/*
+  CONTENIDO REEMPLAZADO PARA 'app/assets/stylesheets/auth.css'
+  Basado en la imagen de login de SEGA.
+*/
+
+/* Contenedor General de Autenticación (ahora es el fondo de la página) */
 .auth-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #f4f7f6;
+  background-color: #1a1a1a; /* Fondo gris muy oscuro de la página */
   min-height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif; /* Fuente sans-serif genérica */
   padding: 20px;
   box-sizing: border-box;
 }
 
-/* Formulario dentro del contenedor */
+/* Formulario dentro del contenedor (la caja de login) */
 .auth-container form {
-  background: #fff;
+  background: #2c2c2c; /* Fondo de la caja de login */
   padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 8px; /* Bordes redondeados sutiles */
+  box-shadow: none; /* Sin sombra */
   width: 100%;
   max-width: 400px;
   box-sizing: border-box;
 }
 
 .auth-title {
-  font-size: 2rem;
-  color: #333;
+  font-size: 1.8rem;
+  color: #ffffff; /* Título en blanco */
   margin-bottom: 30px;
   font-weight: 700;
   text-align: center;
+  text-transform: uppercase; /* Para emular el 'SEGA' de la imagen */
 }
 
 .auth-field {
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .auth-field label {
   display: block;
-  font-weight: 600;
+  font-weight: normal; /* La fuente no es bold en la imagen */
   margin-bottom: 8px;
-  color: #555;
+  color: #cccccc; /* Color de label gris claro */
 }
 
 .auth-input {
   width: 100%;
-  padding: 14px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid #555555; /* Borde gris oscuro */
+  border-radius: 4px;
   font-size: 1rem;
-  color: #333;
-  background-color: #f9f9f9;
+  color: #f0f0f0; /* Texto de input claro */
+  background-color: #1f1f1f; /* Fondo de input más oscuro */
   box-sizing: border-box;
   transition: all 0.3s ease;
 }
 
 .auth-input:focus {
-  border-color: #4CAF50;
-  box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+  border-color: #b89b3e; /* Color dorado de acento al hacer foco */
+  box-shadow: 0 0 5px rgba(184, 155, 62, 0.5); /* Sombra dorada */
   outline: none;
-  background-color: #fff;
+  background-color: #2a2a2a;
 }
 
 .auth-actions {
@@ -66,50 +72,62 @@
 
 .auth-button {
   width: 100%;
-  padding: 15px;
-  background-color: #4CAF50;
-  color: white;
+  padding: 14px;
+  background-color: #b89b3e; /* Fondo dorado del botón */
+  color: #1a1a1a; /* Texto oscuro en el botón */
   border: none;
-  border-radius: 8px;
+  border-radius: 4px;
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease;
 }
 
 .auth-button:hover {
-  background-color: #45a049;
-  transform: translateY(-2px);
+  background-color: #a08836; /* Dorado un poco más oscuro en hover */
 }
 
 .auth-links {
   margin-top: 25px;
   text-align: center;
+  font-size: 0.9rem;
+  color: #cccccc; /* Texto "Problemas para entrar?" */
 }
 
 .auth-link {
-  color: #4CAF50;
+  color: #b89b3e; /* Color dorado para el link "Ayuda en línea" */
   font-size: 0.9rem;
   text-decoration: none;
-  margin: 0 10px;
+  margin: 0 5px;
   transition: color 0.3s ease;
 }
 
 .auth-link:hover {
   text-decoration: underline;
-  color: #388e3c;
 }
 
+/* Estilo para los mensajes de error (emulando la alerta amarilla) */
 #error_explanation {
-  background-color: #f8d7da;
-  color: #721c24;
+  background-color: #b89b3e; /* Fondo dorado */
+  color: #1a1a1a; /* Texto oscuro */
   padding: 15px;
   margin-bottom: 20px;
-  border: 1px solid #f5c6cb;
-  border-radius: 8px;
+  border: none;
+  border-radius: 4px;
 }
 
 #error_explanation h2 {
-  font-size: 1.1rem;
+  font-size: 1rem;
   margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+#error_explanation ul {
+  margin: 0;
+  padding-left: 20px; /* Para mostrar los bullet points */
+}
+
+#error_explanation li {
+  list-style-type: disc; /* Estilo de viñeta */
 }
