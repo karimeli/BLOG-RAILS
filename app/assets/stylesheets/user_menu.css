@@ -1,6 +1,12 @@
 /* Contenedor principal del menú de usuario (Tema Oscuro/Dorado) */
 .user-menu-container {
   position: relative;
+  /* --- INICIO DE LA MODIFICACIÓN --- */
+  /* Añadido para centrar icono y nombre verticalmente */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* --- FIN DE LA MODIFICACIÓN --- */
 }
 
 /* Estilo del ícono de usuario */
@@ -30,7 +36,10 @@
   display: none;
   position: absolute;
   right: 0;
-  top: 55px;
+  /* --- INICIO DE LA MODIFICACIÓN --- */
+  /* Ajustar el top para dejar espacio al nombre */
+  top: 80px; 
+  /* --- FIN DE LA MODIFICACIÓN --- */
   background-color: #2c2c2c; /* Fondo UI oscuro */
   min-width: 160px;
   box-shadow: 0 8px 16px rgba(0,0,0,0.5); /* Sombra más fuerte para resaltar */
@@ -39,6 +48,21 @@
   overflow: hidden;
   border: 1px solid #555555;
 }
+
+/* --- INICIO DE LA MODIFICACIÓN --- */
+/* Estilo para el nombre de usuario */
+.user-name-display {
+  color: #cccccc; /* Color de texto claro (del layout) */
+  font-size: 14px;
+  margin-top: 8px; /* Espacio entre ícono y nombre */
+  text-align: center;
+  /* Evita que el texto largo rompa el layout */
+  max-width: 150px; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* --- FIN DE LA MODIFICACIÓN --- */
 
 /* Botón de cerrar sesión */
 .logout-button {

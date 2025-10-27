@@ -7,6 +7,14 @@
         <div class="user-icon">
           <i class="fa fa-user"></i>
         </div>
+
+        <%# --- INICIO DE LA MODIFICACIÓN --- %>
+        <%# Mostramos el email ya que no hay campo 'name' en la tabla users %>
+        <div class="user-name-display">
+          <%= current_user.email %>
+        </div>
+        <%# --- FIN DE LA MODIFICACIÓN --- %>
+
         <div class="dropdown-menu">
           <%= button_to "Cerrar Sesión", destroy_user_session_path, method: :delete, class: "logout-button" %>
         </div>
@@ -29,7 +37,8 @@
       </div>
 
       <div class="post-card-actions">
-        <%= link_to 'Show', post, class: "action-link show" %>
+        
+<%= link_to 'Show', post, class: "action-link show" %>
         <%= link_to 'Edit', edit_post_path(post), class: "action-link edit" %>
         <%= link_to 'Destroy', post, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "action-link destroy" %>
       </div>
